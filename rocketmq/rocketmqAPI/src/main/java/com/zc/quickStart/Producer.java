@@ -1,4 +1,4 @@
-package com.zc.mq;
+package com.zc.quickStart;
 
 import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.client.producer.DefaultMQProducer;
