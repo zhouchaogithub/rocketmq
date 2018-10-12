@@ -1,6 +1,5 @@
 package com.zc.mq;
 
-import com.alibaba.rocketmq.client.consumer.DefaultMQPullConsumer;
 import com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer;
 import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -15,6 +14,10 @@ import java.util.List;
  * @Auther: zhouchao
  * @Date: 2018/10/11 10:09
  * @Description:
+ * *****************************************************************************************
+ * 先启动消费端，再启动服务提供端（先订阅再注册）
+ * *****************************************************************************************
+ *
  */
 public class Consumer {
     public static void main(String[] args) throws MQClientException {
@@ -34,9 +37,16 @@ public class Consumer {
                        String tags = msg.getTags();
                        String body = new String(msg.getBody(), "UTF-8");
                        System.out.println("收到消息：topic："+topic +"tags："+tags+"msg："+body);
-                   }
+                           if("Hello RocketMq4".equals(body)){
+                               System.out.println("********************************消息失败开始********************************");
+                               System.out.println(msg);
+                               System.out.println("********************************消息失败结束********************************");
+                               throw  new RuntimeException("********************************模拟发生异常********************************");
+                           }
+                        }
                    }catch (Exception e){
                    e.printStackTrace();
+                   //消息消费失败重试机制，
                    return ConsumeConcurrentlyStatus.RECONSUME_LATER;//失败重试
                }
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;//消费成功
