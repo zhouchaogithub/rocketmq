@@ -1,10 +1,10 @@
 package com.zc.model;
 
-import com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer;
-import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
-import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
-import com.alibaba.rocketmq.client.consumer.listener.MessageListenerConcurrently;
-import com.alibaba.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
+import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
+import org.apache.rocketmq.common.message.MessageExt;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class Consumer1 {
      try {
         String consumerGroup = "message_consumer";
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(consumerGroup);
-        consumer.setNamesrvAddr("192.168.126.102:9876;192.168.126.103:9876");
+        consumer.setNamesrvAddr("192.168.94.11:9876;192.168.94.12:9876;192.168.94.13:9876;192.168.94.14:9876");
         consumer.subscribe("Topic1", "Tag1");
         consumer.registerMessageListener(new Consumer1.Listener1());
         consumer.start();

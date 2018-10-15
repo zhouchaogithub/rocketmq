@@ -1,9 +1,9 @@
 package com.zc.model;
 
-import com.alibaba.rocketmq.client.exception.MQClientException;
-import com.alibaba.rocketmq.client.producer.DefaultMQProducer;
-import com.alibaba.rocketmq.client.producer.SendResult;
-import com.alibaba.rocketmq.common.message.Message;
+import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.common.message.Message;
 
 /**
  * @Auther: zhouchao
@@ -14,7 +14,7 @@ public class Producer {
     public static void main(String[] args) throws MQClientException, InterruptedException {
         String producerGroup="producer1";
         DefaultMQProducer producer = new DefaultMQProducer(producerGroup);
-        producer.setNamesrvAddr("192.168.126.102:9876;192.168.126.103:9876");
+        producer.setNamesrvAddr("192.168.94.11:9876;192.168.94.12:9876;192.168.94.13:9876;192.168.94.14:9876");
         //设置失败重发次数（这设置5次）
         producer.setRetryTimesWhenSendFailed(5);
         producer.start();
