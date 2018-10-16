@@ -12,6 +12,9 @@ import java.util.List;
  * @Auther: zhouchao
  * @Date: 2018/10/12 21:56
  * @Description:
+ * *****************************************************
+ * consumerGroup一样时，可以实现消费者之间消息消费的的负载均衡
+ * *****************************************************
  */
 public class Consumer2 {
     public Consumer2() {
