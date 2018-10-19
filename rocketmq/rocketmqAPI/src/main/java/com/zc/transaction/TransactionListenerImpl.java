@@ -21,6 +21,7 @@ public class TransactionListenerImpl implements TransactionListener {
         int value = transactionIndex.getAndIncrement();
         int status = value % 3;
         localTrans.put(message.getTransactionId(),status);
+        System.out.println("LocalTransactionState*********:"+status);
         return LocalTransactionState.UNKNOW;
     }
     @Override

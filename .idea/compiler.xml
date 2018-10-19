@@ -12,6 +12,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="rocketmq" target="1.5" />
       <module name="rocketmqAPI" target="6" />
+      <module name="rocketmqtxpay" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
